@@ -12,6 +12,6 @@
     ],
     "require": {
         "pear/services_twitter": "*",
-        "pear-pear.php.net/HTTP_OAuth": ">=0.1.7"
+        "pear-pear/HTTP_OAuth": ">=0.1.7"
     }
 }

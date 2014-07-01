@@ -39,7 +39,7 @@
                 },
                 "type": "library",
                 "require": {
-                    "pear/pear_exception": "*"
+                    "pear-pear.php.net/PEAR_Exception": "*"
                 },
                 "require-dev": {
                     "phpunit/phpunit": "*"

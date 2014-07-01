@@ -1,8 +1,9 @@
 <?php
     require_once ('config.inc');
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        require_once ('Services/Twitter.php');
-        require_once ('HTTP/OAuth/Consumer.php');
+        //require_once ('Services/Twitter.php');
+        //require_once ('HTTP/OAuth/Consumer.php');
+        require_once ('vendor/autoload.php');
 
         $returnArr = array();
 

@@ -6,7 +6,7 @@
             "url": "http://pear.php.net/"
         },
         {
-            "type": "vsc",
+            "type": "vcs",
             "url": "https://github.com/pear/Services_Twitter"
         }
     ],

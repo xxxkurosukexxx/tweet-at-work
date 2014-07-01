@@ -7,6 +7,6 @@
     ],
     "require": {
         "pear/services_twitter": "*",
-        "pear/http_oauth": "*",
+        "pear/http_oauth": "*"
     }
 }

@@ -4,7 +4,7 @@
     "repositories": [
         {
             "type": "git",
-            "url": "git@github.com:pear/services_twitter"
+            "url": "git@github.com:pear/Services_Twitter.git"
         },
         {
             "type": "pear",

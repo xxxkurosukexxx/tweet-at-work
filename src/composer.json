@@ -1,12 +1,17 @@
 {
+    "name": "xxxkurosukexxx/tweet-at-work",
     "repositories": [
         {
             "type": "pear",
             "url": "http://pear.php.net/"
+        },
+        {
+            "type": "vsc",
+            "url": "https://github.com/pear/Services_Twitter"
         }
     ],
     "require": {
         "pear/services_twitter": "*",
-        "pear/http_oauth": "*"
+        "pear-pear.php.net/HTTP_OAuth": ">=0.1.7"
     }
 }

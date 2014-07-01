@@ -55,7 +55,8 @@
                     "reference": "trunk",
                     "type": "git",
                     "url": "git@github.com:pear/Services_Twitter.git"
-                }
+                },
+                "version": "trunk"
             }
         },
         {
@@ -64,7 +65,7 @@
         }
     ],
     "require": {
-        "pear/services_twitter": "*",
+        "pear/services_twitter": "trunk",
         "pear-pear.php.net/HTTP_OAuth": ">=0.1.7"
     }
 }

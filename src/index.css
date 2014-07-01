@@ -1,0 +1,24 @@
+* {
+	background-color: #111;
+	font-family: 'Lucida Grande', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
+	overflow: hidden;
+}
+
+#limit.over {
+    color: #F00!important;
+}
+
+#msg {
+	outline-style: auto;
+	outline-width: 5px;
+}
+
+#repId {
+	width: 200px;
+}
+
+#btns {
+	position: absolute;
+	right: 12px;
+	top: 0px;
+}

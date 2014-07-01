@@ -17,9 +17,14 @@
                     "url": "git@github.com:pear/Services_Twitter.git"
                 }
             }
+        },
+        {
+            "type": "pear",
+            "url": "http://pear.php.net"
         }
     ],
     "require": {
-        "pear/services_twitter": "*"
+        "pear/services_twitter": "*",
+        "pear-pear.php.net/HTTP_OAuth": ">=0.1.7"
     }
 }

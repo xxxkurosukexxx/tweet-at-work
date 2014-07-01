@@ -8,8 +8,7 @@
         }
     ],
     "require": {
-        "pear/pear_exception": "1.0.*@dev",
-        "pear/services_twitter": "dev-trunk",
+        "pear/services_twitter": "*",
         "pear-pear.php.net/HTTP_OAuth": ">=0.1.7"
     }
 }

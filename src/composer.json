@@ -1,0 +1,12 @@
+{
+    "repositories": [
+        {
+            "type": "pear",
+            "url": "http://pear.php.net/"
+        }
+    ],
+    "require": {
+        "pear/services_twitter",
+        "pear/http_oauth",
+    }
+}

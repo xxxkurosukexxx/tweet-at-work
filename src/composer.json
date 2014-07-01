@@ -1,17 +1,25 @@
 {
     "name": "xxxkurosukexxx/tweet-at-work",
+    "description": "hogehoge",
     "repositories": [
         {
-            "type": "pear",
-            "url": "http://pear.php.net/"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/pear/Services_Twitter"
+            "type": "package",
+            "package": {
+                "name": "pear/services_twitter",
+                "version": "0.1",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://github.com/pear/Services_Twitter/archive/trunk.zip"
+                },
+                "source": {
+                    "reference": "trunk",
+                    "type": "git",
+                    "url": "git@github.com:pear/Services_Twitter.git"
+                }
+            }
         }
     ],
     "require": {
-        "pear/services_twitter": "*",
-        "pear-pear/HTTP_OAuth": ">=0.1.7"
+        "pear/services_twitter": "*"
     }
 }

@@ -1,6 +1,7 @@
 {
     "name": "xxxkurosukexxx/tweet-at-work",
     "description": "hogehoge",
+    "minimum-stability": "dev",
     "repositories": [
         {
             "type": "pear",
@@ -8,7 +9,8 @@
         }
     ],
     "require": {
-        "pear/services_twitter": "*",
+        "ext-mbstring": "*",
+        "pear/services_twitter": "dev-trunk",
         "pear-pear.php.net/HTTP_OAuth": ">=0.1.7"
     }
 }

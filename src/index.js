@@ -40,7 +40,7 @@ $(function() {
             } else if (msg.val().replace(/\s/g, "").length > 0) {
                 e.preventDefault();
                 $.post(window.location.toString(), $("#form").serializeArray(), function(res) {
-                    if (res.errors !== undefined) {
+                    if (res.errors === undefined) {
                         $(".msg").val("");
                         calcLimit(msg);
                         $("#face").text("( 'ω') ok.");
@@ -76,7 +76,7 @@ $(function() {
             "mode" : "repGet",
             "id"   : $("#idselect").val()
         }, function(res) {
-            if (res.errors !== undefined) {
+            if (res.errors === undefined) {
                 var msg = res[0];
                 alert("\"@" + msg.user.screen_name + " " + msg.user.name + "\"\n" + msg.text);
                 $("#repId").val(msg.id_str);
@@ -95,7 +95,7 @@ $(function() {
             "mode" : "del",
             "id"   : $("#idselect").val()
         }, function(res) {
-            if (res.errors !== undefined) {
+            if (res.errors === undefined) {
                 alert("( 'ω') ok.");
             } else {
                 alert("( 'ω') error...");

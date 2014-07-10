@@ -40,12 +40,16 @@ $(function() {
             } else if (msg.val().replace(/\s/g, "").length > 0) {
                 e.preventDefault();
                 $.post(window.location.toString(), $("#form").serializeArray(), function(res) {
-                    if (res.status == "OK") {
+                    if (res.errors !== undefined) {
                         $(".msg").val("");
                         calcLimit(msg);
                         $("#face").text("( 'ω') ok.");
                     } else {
-                        alert(res.message);
+                        var eMsg = "";
+                        res.errors.forEach(function(m) {
+                            eMsg += e.code + ": " + e.message + "\n";
+                        });
+                        alert(eMsg);
                         $("#face").text("( 'ω') error...");
                     }
                     return false;
@@ -72,8 +76,8 @@ $(function() {
             "mode" : "repGet",
             "id"   : $("#idselect").val()
         }, function(res) {
-            if (res.status == "OK") {
-                var msg = res.message[0];
+            if (res.errors !== undefined) {
+                var msg = res[0];
                 alert("\"@" + msg.user.screen_name + " " + msg.user.name + "\"\n" + msg.text);
                 $("#repId").val(msg.id_str);
                 $("#msg").val("@" + msg.user.screen_name + " " + $("#msg").val());
@@ -91,7 +95,7 @@ $(function() {
             "mode" : "del",
             "id"   : $("#idselect").val()
         }, function(res) {
-            if (res.status == "OK") {
+            if (res.errors !== undefined) {
                 alert("( 'ω') ok.");
             } else {
                 alert("( 'ω') error...");

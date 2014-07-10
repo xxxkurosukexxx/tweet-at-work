@@ -5,51 +5,50 @@
         //require_once ('HTTP/OAuth/Consumer.php');
         require_once ('vendor/autoload.php');
 
-        $returnArr = array();
-
-        try {
-            $twitter = new Services_Twitter();
-            $id = $_POST["id"];
-
-            // *----- oAuth -----* //
-            $oauth = new HTTP_OAuth_Consumer($consumer_key, $consumer_secret, $auth_token[$id], $token_secret[$id]);
-            $twitter -> setOption("use_ssl", true);
-            $twitter -> setOAuth($oauth);
-            // *----- oAuth -----* //
-
-            // *----- main -----* //
-            switch($_POST["mode"]) {
-                case "post" :
-                    $postParams = array("status" => $_POST["msg"]);
-                    if(!empty($_POST["repId"])) {
-                        $postParams["in_reply_to_status_id"] = $_POST["repId"];
-                    }
-                    $msg = $twitter -> statuses -> update($postParams);
-                    break;
-                case "del" :
-                    $statuses = $twitter -> statuses -> user_timeline();
-                    $msg = $twitter -> statuses -> destroy($statuses[0] -> id_str);
-                    break;
-                case "repGet" :
-                    $msg = $twitter -> statuses -> mentions_timeline(array("count" => 1));
-                    break;
-            }
-            // *----- main -----* //
-
-            $returnArr = array(
-                "status" => "OK",
-                "message" => $msg
-            );
-        } catch(Services_Twitter_Exception $e) {
-            error_log(var_export($e -> getMessage(), true));
-            $returnArr = array(
-                "status" => "NG",
-                "message" => $e -> getMessage()
-            );
-        }
-
         header('Content-type: application/json');
-        echo json_encode($returnArr);
+
+        $API_URL_BASE = "https://api.twitter.com/1.1/";
+        $id = $_POST["id"];
+
+        // *----- oAuth -----* //
+        $oauth = array(
+                    'oauth_access_token'        => $auth_token[$id], 
+                    'oauth_access_token_secret' => $token_secret[$id],
+                    'consumer_key'              => $consumer_key,
+                    'consumer_secret'           => $consumer_secret,
+                );
+        $twitter = new TwitterAPIExchange($oauth);
+        // *----- oAuth -----* //
+
+        // *----- main -----* //
+        switch($_POST["mode"]) {
+            case "post" :
+                $postParams = array("status" => $_POST["msg"]);
+                if(!empty($_POST["repId"])) {
+                    $postParams["in_reply_to_status_id"] = $_POST["repId"];
+                }
+                $msg = $twitter -> buildOauth($API_URL_BASE."statuses/update.json", "POST")
+                                -> setPostFields($postParams)
+                                -> preformRequest();
+                break;
+            case "del" :
+                $statuses = $twitter -> setGetfield("?count=1&include_rts=1")
+                                     -> buildOauth($API_URL_BASE."statuses/user_timeline.json", "GET")
+                                     -> preformRequest();
+                $statusesObj = json_decode($statuses);
+                $targetId = $statuses[0]->id_str;
+                $msg = $twitter -> buildOauth($API_URL_BASE."statuses/destroy/{$targetId}.json", "POST")
+                                -> preformRequest();
+                break;
+            case "repGet" :
+                $msg = $twitter -> setGetfield("?count=1")
+                                -> buildOauth($API_URL_BASE."statuses/mentions_timeline.json", "GET")
+                                -> preformRequest();
+                break;
+        }
+        // *----- main -----* //
+
+        echo $msg;
     } else {
         header('Content-type: text/html; charset=utf-8');
 ?>

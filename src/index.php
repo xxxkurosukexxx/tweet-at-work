@@ -36,7 +36,7 @@
                                      -> buildOauth($API_URL_BASE."statuses/user_timeline.json", "GET")
                                      -> performRequest();
                 $statusesObj = json_decode($statuses);
-                $targetId = $statuses[0]->id_str;
+                $targetId = $statuses[0]['id_str'];
                 $msg = $twitter -> buildOauth($API_URL_BASE."statuses/destroy/{$targetId}.json", "POST")
                                 -> performRequest();
                 break;

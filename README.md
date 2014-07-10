@@ -87,3 +87,9 @@ ln -s /usr/src/tweet-at-work/src /var/www/html/tweet
   - 今あるものが全てです。forkして(ry
 - バグみつけた
   - issue上げてください。気が向いたら直します。あるいはfork(ry
+
+
+
+## 更新履歴
+- [v001](https://github.com/xxxkurosukexxx/tweet-at-work/releases/tag/ver001) 2014/07/02 初版リリース。「とりあえず動く」とか書いてるが、実はかなり動かない。
+- [v002](https://github.com/xxxkurosukexxx/tweet-at-work/releases/tag/ver002) 2014/07/10 ライブラリを変更。動くようになった。

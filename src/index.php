@@ -37,7 +37,9 @@
                                      -> performRequest();
                 $statusesObj = json_decode($statuses);
                 $targetId = $statusesObj[0]->id_str;
+                $postParams = array("id" => $targetId);
                 $msg = $twitter -> buildOauth($API_URL_BASE."statuses/destroy/{$targetId}.json", "POST")
+                                -> setPostFields($postParams)
                                 -> performRequest();
                 break;
             case "repGet" :

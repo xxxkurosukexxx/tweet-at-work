@@ -32,11 +32,12 @@
                                 -> performRequest();
                 break;
             case "del" :
-                $statuses = $twitter -> setGetfield("?count=1&include_rts=1")
+                $statuses = $twitter -> setGetfield("?count=1&include_rts=1&screen_name={$id}")
                                      -> buildOauth($API_URL_BASE."statuses/user_timeline.json", "GET")
                                      -> performRequest();
+                error_log($statuses);
                 $statusesObj = json_decode($statuses);
-                $targetId = $statuses[0]['id_str'];
+                $targetId = $statuses[0]->id_str;
                 $msg = $twitter -> buildOauth($API_URL_BASE."statuses/destroy/{$targetId}.json", "POST")
                                 -> performRequest();
                 break;

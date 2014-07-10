@@ -29,21 +29,21 @@
                 }
                 $msg = $twitter -> buildOauth($API_URL_BASE."statuses/update.json", "POST")
                                 -> setPostFields($postParams)
-                                -> preformRequest();
+                                -> performRequest();
                 break;
             case "del" :
                 $statuses = $twitter -> setGetfield("?count=1&include_rts=1")
                                      -> buildOauth($API_URL_BASE."statuses/user_timeline.json", "GET")
-                                     -> preformRequest();
+                                     -> performRequest();
                 $statusesObj = json_decode($statuses);
                 $targetId = $statuses[0]->id_str;
                 $msg = $twitter -> buildOauth($API_URL_BASE."statuses/destroy/{$targetId}.json", "POST")
-                                -> preformRequest();
+                                -> performRequest();
                 break;
             case "repGet" :
                 $msg = $twitter -> setGetfield("?count=1")
                                 -> buildOauth($API_URL_BASE."statuses/mentions_timeline.json", "GET")
-                                -> preformRequest();
+                                -> performRequest();
                 break;
         }
         // *----- main -----* //

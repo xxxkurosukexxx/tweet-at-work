@@ -3,14 +3,9 @@
     "description": "hogehoge",
     "minimum-stability": "dev",
     "repositories": [
-        {
-            "type": "pear",
-            "url": "http://pear.php.net"
-        }
     ],
     "require": {
         "ext-mbstring": "*",
-        "pear/services_twitter": "dev-trunk",
-        "pear-pear.php.net/HTTP_OAuth": ">=0.1.7"
-    }
+        "j7mbo/twitter-api-php": "dev-master"
+}
 }

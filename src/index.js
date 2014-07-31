@@ -37,16 +37,16 @@ $(function() {
         if (e.keyCode == 13) {// Enterが押された
             if (e.shiftKey) {// Shiftキーも押された
                 $.noop();
-            } else if (msg.val().replace(/\s/g, "").length > 0) {
+            } else if (msg.val().replace(/\s/g, '').length > 0) {
                 e.preventDefault();
                 $.post(window.location.toString(), $("#form").serializeArray(), function(res) {
                     if (res.errors === undefined) {
-                        $(".msg").val("");
+                        msg.val('');
                         calcLimit(msg);
                         $("#face").text("( 'ω') ok.");
                     } else {
-                        var eMsg = "";
-                        res.errors.forEach(function(m) {
+                        var eMsg = '';
+                        res.errors.forEach(function(e) {
                             eMsg += e.code + ": " + e.message + "\n";
                         });
                         alert(eMsg);
@@ -66,7 +66,10 @@ $(function() {
     // clearボタン
     // 本文、リプIDをクリアする。
     $("#clearBtn").click(function() {
-        $(".msg").val('');
+        msg.val('');
+        calcLimit(msg);
+        $("#face").text("( 'ω') ?");
+        $("#repId").val('');
     });
 
     // repボタン
@@ -77,10 +80,11 @@ $(function() {
             "id"   : $("#idselect").val()
         }, function(res) {
             if (res.errors === undefined) {
-                var msg = res[0];
-                alert("\"@" + msg.user.screen_name + " " + msg.user.name + "\"\n" + msg.text);
-                $("#repId").val(msg.id_str);
-                $("#msg").val("@" + msg.user.screen_name + " " + $("#msg").val());
+                var rMsg = res[0];
+                alert("\"@" + rMsg.user.screen_name + " " + rMsg.user.name + "\"\n" + rMsg.text);
+                $("#repId").val(rMsg.id_str);
+                msg.val("@" + rMsg.user.screen_name + " " + msg.val());
+                calcLimit(msg);
             } else {
                 alert("( 'ω') error...");
             }
@@ -110,7 +114,7 @@ $(function() {
         msg.focus();
         msg.val($(this).val() + msg.val());
         calcLimit(msg);
-        $(this).val("");
+        $(this).val('');
     });
 
     // ID切替

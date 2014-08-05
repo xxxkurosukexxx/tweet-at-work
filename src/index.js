@@ -19,6 +19,10 @@ $(function() {
     // 本文
     var msg = $("#msg");
     msg.focus();
+    // 左上の顔
+    var face = $("#face");
+    // リプID
+    var repId = $("#repId");
 
     function init(){
         $.each(twitterAccount, function(){
@@ -43,14 +47,15 @@ $(function() {
                     if (res.errors === undefined) {
                         msg.val('');
                         calcLimit(msg);
-                        $("#face").text("( 'ω') ok.");
+                        face.text("( 'ω') ok.");
+                        repId.val('');
                     } else {
                         var eMsg = '';
                         res.errors.forEach(function(e) {
                             eMsg += e.code + ": " + e.message + "\n";
                         });
                         alert(eMsg);
-                        $("#face").text("( 'ω') error...");
+                        face.text("( 'ω') error...");
                     }
                     return false;
                 });
@@ -68,8 +73,8 @@ $(function() {
     $("#clearBtn").click(function() {
         msg.val('');
         calcLimit(msg);
-        $("#face").text("( 'ω') ?");
-        $("#repId").val('');
+        face.text("( 'ω') ?");
+        repId.val('');
     });
 
     // repボタン

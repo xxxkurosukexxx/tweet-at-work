@@ -9,7 +9,7 @@ function calcLimit(obj) {
 }
 
 function resize() {
-    window.resizeTo(700, 185);
+    window.resizeTo(720, 185);
 }
 
 window.onload = resize;
@@ -61,6 +61,12 @@ $(function() {
                 });
             }
         }
+    });
+
+    // repIdでEnterするとPOSTされてJSONが表示される不具合修正
+    $(document).on("keypress", "#repId", function(e) {
+        e.preventDefault();
+        return false;
     });
 
     // 本文入力時の文字数計算処理
@@ -134,6 +140,5 @@ $(function() {
         $("*").css("color", colorConfig[id]);
         $(".msg:focus").css("outline-color", colorConfig[id]);
     }
-    
-})
 
+})

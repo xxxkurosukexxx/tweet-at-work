@@ -1,10 +1,10 @@
 <?php
 /**
-   _____                   _              _     __        __         _
-  |_   _|_      _____  ___| |_       __ _| |_   \ \      / /__  _ __| | __
-    | | \ \ /\ / / _ \/ _ \ __|____ / _` | __|___\ \ /\ / / _ \| '__| |/ /
-    | |  \ V  V /  __/  __/ ||_____| (_| | ||_____\ V  V / (_) | |  |   <
-    |_|   \_/\_/ \___|\___|\__|     \__,_|\__|     \_/\_/ \___/|_|  |_|\_\
+*   _____                   _              _     __        __         _
+*  |_   _|_      _____  ___| |_       __ _| |_   \ \      / /__  _ __| | __
+*    | | \ \ /\ / / _ \/ _ \ __|____ / _` | __|___\ \ /\ / / _ \| '__| |/ /
+*    | |  \ V  V /  __/  __/ ||_____| (_| | ||_____\ V  V / (_) | |  |   <
+*    |_|   \_/\_/ \___|\___|\__|     \__,_|\__|     \_/\_/ \___/|_|  |_|\_\
 */
 
     require_once ('config.inc');
@@ -20,7 +20,7 @@
 
         // *----- oAuth -----* //
         $oauth = array(
-                    'oauth_access_token'        => $auth_token[$id], 
+                    'oauth_access_token'        => $auth_token[$id],
                     'oauth_access_token_secret' => $token_secret[$id],
                     'consumer_key'              => $consumer_key,
                     'consumer_secret'           => $consumer_secret,
@@ -64,7 +64,7 @@
         header('Content-type: text/html; charset=utf-8');
 ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<html lang="ja">
     <head>
         <meta charset="utf-8">
         <script src="jquery-2.0.3.min.js"></script>
@@ -78,26 +78,23 @@
         </script>
     </head>
     <body>
-        <span id="face">( 'ω') ?</span> <span id="limit">140</span>
-        <span id="btns">
-            <button id="repGetBtn" title="rep">
-                rep
-            </button>
-            <button id="clearBtn" title="clear">
-                clear
-            </button>
-            <button id="delBtn" title="undo">
-                undo
-            </button>
-            <select id="faceSelect">
-                <option value="">☻</option>
-            </select>
-            <select id="idselect">
-            </select>
-        </span>
+        <div id="head">
+            <span id="face">( 'ω') ?</span>
+            <span id="limit">140</span>
+            <span id="btns">
+                <button id="repGetBtn" title="rep">rep</button>
+                <button id="clearBtn" title="clear">clear</button>
+                <button id="delBtn" title="undo">undo</button>
+                <select id="faceSelect">
+                    <option value="">☻</option>
+                </select>
+                <select id="idselect">
+                </select>
+            </span>
+        </div>
         <form method="post" id="form">
-            <textarea class="msg" id="msg" name="msg" rows="3" cols="80"></textarea><br />
-            <label>Reply to : </label><input class="msg" id="repId" type="text" name="repId" readonly="true" />
+            <textarea class="msg" id="msg" name="msg" rows="3"></textarea>
+            <label id="l">Reply to : <input class="msg" id="repId" type="text" name="repId" readonly="true" /></label>
             <input type="hidden" name="mode" value="post" />
             <input type="hidden" name="id" id="twitterid" value="" />
         </form>

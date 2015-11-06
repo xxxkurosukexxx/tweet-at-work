@@ -1,28 +1,54 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/sanitize.css/2.0.0/sanitize.min.css);
 * {
     background-color: #111;
     font-family: 'Lucida Grande', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif !important;
     overflow: hidden;
 }
-
+body {
+    padding: 5px;
+}
+#head {
+    display: table;
+    width: 100%;
+}
+#head > * {
+    display: table-cell;
+    vertical-align: bottom;
+    height: 26px;
+}
+#head:after {
+    display: block;
+    content: '';
+    clear: both;
+}
 #limit.over {
     color: #F00!important;
 }
-
+#btns {
+    text-align: right;
+    vertical-align: top;
+}
+#faceSelect {
+    width: 20px;
+    -webkit-appearance: none;
+}
 #msg {
     outline-style: auto;
     outline-width: 5px;
+    border: none;
+    resize: none;
+    margin: 5px 0;
+    width: 100%;
 }
-
+#l {
+    margin-top: 5px;
+}
 #repId {
     width: 200px;
 }
-
-#btns {
-    position: absolute;
-    right: 12px;
-    top: 0px;
-}
-
-textarea {
-    resize: none;
+button, select, input {
+    outline-style: auto;
+    outline-width: 5px;
+    border: none;
+    font-size: 14px;
 }

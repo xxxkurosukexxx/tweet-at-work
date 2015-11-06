@@ -9,7 +9,7 @@ function calcLimit(obj) {
 }
 
 function resize() {
-    window.resizeTo(720, 185);
+    window.resizeTo(720, 190);
 }
 
 window.onload = resize;

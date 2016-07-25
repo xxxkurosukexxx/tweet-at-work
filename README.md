@@ -7,8 +7,8 @@ tweet専用クライアント。
 
 ## 機能？
 - tweetする
-    - EnterでPOST
-    - Shift + Enterで改行
+    - Ctrl + EnterでPOST
+    - Enterで改行
 - リプライする
     - repボタン
 - 最新の発言を消す（問答無用に削除するので取り扱い注意）
@@ -19,11 +19,11 @@ tweet専用クライアント。
     - configファイルで設定
 
 
-## 動作環境？
+## 動作（開発）環境？
 ### サーバー側
-- CentOS 6.5 x86_64
-- Apache 2.2.15
-- PHP 5.3.3
+- Windows 7 x64
+- nginx/1.4.5
+- PHP/5.3.27
     - mbstring
     - Composer
 
@@ -91,5 +91,6 @@ ln -s /usr/src/tweet-at-work/src /var/www/html/tweet
 
 
 ## 更新履歴
-- [v001](https://github.com/xxxkurosukexxx/tweet-at-work/releases/tag/ver001) 2014/07/02 初版リリース。「とりあえず動く」とか書いてるが、実はかなり動かない。
-- [v002](https://github.com/xxxkurosukexxx/tweet-at-work/releases/tag/ver002) 2014/07/10 ライブラリを変更。動くようになった。
+- [ver001](https://github.com/xxxkurosukexxx/tweet-at-work/releases/tag/ver001) 2014/07/02 初版リリース。「とりあえず動く」とか書いてるが、実はかなり動かない。
+- [ver002](https://github.com/xxxkurosukexxx/tweet-at-work/releases/tag/ver002) 2014/07/10 ライブラリを変更。動くようになった。
+- [ver003](https://github.com/xxxkurosukexxx/tweet-at-work/releases/tag/ver003) 2016/07/25 投稿がCtrl+Enterになったとかその他色々

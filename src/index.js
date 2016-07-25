@@ -38,10 +38,8 @@ $(function() {
 
     // 本文入力時のEnterキーの処理
     $(document).on("keypress", "#msg", function(e) {
-        if (e.keyCode == 13) {// Enterが押された
-            if (e.shiftKey) {// Shiftキーも押された
-                $.noop();
-            } else if (msg.val().replace(/\s/g, '').length > 0) {
+        if ((event.keyCode == 10 || event.keyCode == 13) && event.ctrlKey) {
+            if (msg.val().replace(/\s/g, '').length > 0) {
                 e.preventDefault();
                 $.post(window.location.toString(), $("#form").serializeArray(), function(res) {
                     if (res.errors === undefined) {
